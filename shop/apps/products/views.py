@@ -19,7 +19,7 @@ class ProductItemListView(generics.ListAPIView):
 
 
 class ProductItemDetailView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = ProductItem.objects.all()
+    queryset = ProductItem.instock.all()
     serializer_class = ProductItemSerializer
 
 

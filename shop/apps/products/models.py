@@ -21,6 +21,16 @@ class Product(models.Model):
         return self.name
 
 
+class InStockManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().exclude(quantity=0)
+
+
+class ProductItemManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset()
+
+
 class ProductItem(models.Model):
     color = models.CharField(choices=PRODUCT_COLORS, max_length=255, db_index=True)
     size = models.CharField(max_length=20)
@@ -30,6 +40,9 @@ class ProductItem(models.Model):
 
     def __str__(self):
         return f"{self.product.name}'s item"
+    
+    instock = InStockManager()
+    objects = ProductItemManager()
 
 
 

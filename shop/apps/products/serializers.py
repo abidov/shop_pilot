@@ -14,7 +14,7 @@ class ProductDetailSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Product
         fields = ('name', 'description', 'product_items', 'categories')
-    
+
 
 class ProductItemSerializer(serializers.HyperlinkedModelSerializer):
     product = ProductSerializer(read_only=True)

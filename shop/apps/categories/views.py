@@ -10,6 +10,12 @@ class CategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
 
+    def get_serializer_class(self):
+        if self.action == 'create':
+            return CategoryCreateSerializer
+        else:
+            return CategorySerializer
+
 
 
         
