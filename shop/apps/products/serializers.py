@@ -21,7 +21,7 @@ class ProductItemSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = ProductItem
-        fields = ('color', 'size', 'quantity', 'price', 'product', 'product_item_images')
+        fields = ('url', 'color', 'size', 'quantity', 'price', 'product', 'product_item_images')
 
 
 class ProductImageSerializer(serializers.HyperlinkedModelSerializer):

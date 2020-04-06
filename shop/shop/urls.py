@@ -8,7 +8,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', api_root, name='api_root'),
     path('api/products/', include('apps.products.urls')),
-    path('api/categories/', include('apps.categories.urls'))
+    path('api/categories/', include('apps.categories.urls')),
+    path('api_auth/', include('rest_framework.urls')),
+    path('api/users/', include('apps.users.urls'))
 ]
 
 
