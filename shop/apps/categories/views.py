@@ -11,8 +11,6 @@ class CategoryViewSet(viewsets.ModelViewSet):
     serializer_class = CategorySerializer
 
 
-    def create(self, request, *args, **kwargs):
-        queryset = self.get_queryset()
-        serializer_class = CategoryCreateSerializer(queryset)
+
         
         

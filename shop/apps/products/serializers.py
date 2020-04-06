@@ -10,12 +10,11 @@ class ProductSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class ProductDetailSerializer(serializers.HyperlinkedModelSerializer):
-    product_items = serializers.SerializerMethodField()
 
     class Meta:
         model = Product
         fields = ('name', 'description', 'product_items', 'categories')
-
+    
 
 class ProductItemSerializer(serializers.HyperlinkedModelSerializer):
     product = ProductSerializer(read_only=True)

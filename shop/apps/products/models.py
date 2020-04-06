@@ -12,7 +12,6 @@ PRODUCT_COLORS = (
 )
 
 
-
 class Product(models.Model):
     name = models.CharField(max_length=255, db_index=True, verbose_name='product name')
     description = models.TextField()
