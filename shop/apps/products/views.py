@@ -42,3 +42,5 @@ def add_to_bookmark(request, pk):
     else:
         bookmark.product_items.remove(product)
         return Response(status=status.HTTP_202_ACCEPTED, data={'message': 'successfully removed from bookmarks'})
+
+
