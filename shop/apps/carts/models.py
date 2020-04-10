@@ -7,23 +7,19 @@ from apps.products.models import ProductItem
 
 
 class Cart(models.Model):
-    user = models.ForeignKey(User, null=True, blank=True, on_delete=models.SET_NULL, related_name='cart')    
+    user = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)    
 
     def __str__(self):
         return str(self.id)
 
 
 class CartItem(models.Model):
-    cart = models.ForeignKey(Cart, on_delete=models.CASCADE, related_name='cart_item')
-    product_item = models.ManyToManyField(ProductItem, related_name='product_in_cart')
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE, related_name='cart_items')
+    product_item = models.ForeignKey(ProductItem, related_name='product_in_cart', on_delete=models.CASCADE)
     amount = models.PositiveIntegerField(default=1, blank=True)
 
     def __str__(self):
         return f"{self.cart.id} = cart items"
-
-
-
-    
 
     
 

@@ -8,6 +8,6 @@ def api_root(request, format=None):
     response = Response({
         'products': reverse('product-list', request=request, format=format),
         'users': reverse('user-list', request=request, format=format),
-        'categories': reverse('category-list', request=request, format=format)
+        'categories': reverse('category-list', request=request, format=format),
     })
     return response
