@@ -9,6 +9,9 @@ def api_root(request, format=None):
         'products': reverse('product-list', request=request, format=format),
         'users': reverse('user-list', request=request, format=format),
         'categories': reverse('category-list', request=request, format=format),
+<<<<<<< HEAD
         'sign-up': reverse('user-create', request=request, format=format)
+=======
+>>>>>>> 37228d8634f9299cb08dc0a0af3415304659af19
     })
     return response

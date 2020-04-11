@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from rest_framework.test import APITestCase
 from rest_framework import status
 
@@ -34,3 +35,8 @@ class ProductTest(APITestCase):
 
 
 
+=======
+from django.test import TestCase
+
+# Create your tests here.
+>>>>>>> 37228d8634f9299cb08dc0a0af3415304659af19

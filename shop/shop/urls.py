@@ -10,7 +10,12 @@ urlpatterns = [
     path('api/products/', include('apps.products.urls')),
     path('api/categories/', include('apps.categories.urls')),
     path('api_auth/', include('rest_framework.urls')),
+<<<<<<< HEAD
     path('api/users/', include('apps.users.urls'))
+=======
+    path('api/users/', include('apps.users.urls')),
+    path('api/carts/', include('apps.carts.urls'))
+>>>>>>> 37228d8634f9299cb08dc0a0af3415304659af19
 ]
 
 

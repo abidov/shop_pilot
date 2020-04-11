@@ -20,9 +20,12 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
+<<<<<<< HEAD
     def get_absolute_url(self):
         return reverse('product-detail', kwargs = {"pk" : self.pk})
 
+=======
+>>>>>>> 37228d8634f9299cb08dc0a0af3415304659af19
 
 class InStockManager(models.Manager):
     def get_queryset(self):
@@ -35,7 +38,11 @@ class ProductItemManager(models.Manager):
 
 
 class ProductItem(models.Model):
+<<<<<<< HEAD
     color = models.CharField(choices=PRODUCT_COLORS, max_length=255, db_index=True, default=('PURPLE', 'Purple'))
+=======
+    color = models.CharField(choices=PRODUCT_COLORS, max_length=255, db_index=True)
+>>>>>>> 37228d8634f9299cb08dc0a0af3415304659af19
     size = models.CharField(max_length=20)
     quantity = models.PositiveIntegerField()
     price = models.DecimalField(max_digits=10, decimal_places=2) # 2000.00
@@ -43,6 +50,7 @@ class ProductItem(models.Model):
 
     def __str__(self):
         return f"{self.product.name}'s item"
+<<<<<<< HEAD
 
     def get_absolute_url(self):
         return reverse('productitem-detail', kwargs = {'pk' : self.pk})
@@ -52,6 +60,11 @@ class ProductItem(models.Model):
     
     
     
+=======
+    
+    instock = InStockManager()
+    objects = ProductItemManager()
+>>>>>>> 37228d8634f9299cb08dc0a0af3415304659af19
 
 
 
