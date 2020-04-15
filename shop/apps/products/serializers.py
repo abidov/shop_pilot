@@ -10,6 +10,7 @@ class ProductSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class ProductDetailSerializer(serializers.HyperlinkedModelSerializer):
+    product_items = ProductItem.instock.all()
 
     class Meta:
         model = Product
