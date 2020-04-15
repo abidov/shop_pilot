@@ -10,11 +10,8 @@ class ProductSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class ProductDetailSerializer(serializers.HyperlinkedModelSerializer):
-<<<<<<< HEAD
     product_items = ProductItem.instock.all()
-=======
 
->>>>>>> 37228d8634f9299cb08dc0a0af3415304659af19
     class Meta:
         model = Product
         fields = ('name', 'description', 'product_items', 'categories')

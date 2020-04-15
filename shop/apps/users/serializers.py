@@ -1,9 +1,6 @@
 from rest_framework import serializers
-<<<<<<< HEAD
 from rest_framework.validators import UniqueValidator
 from rest_framework.exceptions import ValidationError 
-=======
->>>>>>> 37228d8634f9299cb08dc0a0af3415304659af19
 from django.contrib.auth.models import User
 
 from apps.products.serializers import ProductItemSerializer
@@ -14,8 +11,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = User
-<<<<<<< HEAD
-        fields = ('url', 'username', 'email', 'bookmark')
+        fields = ('url', 'username', 'email', 'bookmark', 'cart')
     
 
 class UserCreateSerializer(serializers.HyperlinkedModelSerializer):
@@ -38,20 +34,12 @@ class UserCreateSerializer(serializers.HyperlinkedModelSerializer):
             user.set_password(password1)
             user.save()
         return user
-=======
         fields = ('url', 'username', 'email', 'bookmark', 'cart')
 
-
->>>>>>> 37228d8634f9299cb08dc0a0af3415304659af19
 
 class BookmarkSerializer(serializers.HyperlinkedModelSerializer):
     product_items = ProductItemSerializer(many=True)
 
     class Meta:
         model = Bookmark
-<<<<<<< HEAD
         fields = ('user', 'product_items')
-    
-=======
-        fields = ('user', 'product_items')
->>>>>>> 37228d8634f9299cb08dc0a0af3415304659af19

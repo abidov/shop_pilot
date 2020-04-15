@@ -1,6 +1,7 @@
 
 from django.urls import path
 from . import views
+from apps.carts.views import CartItemView
 
 
 urlpatterns = [
@@ -10,4 +11,5 @@ urlpatterns = [
     path('items/<int:pk>/', views.ProductItemDetailView.as_view(), name='productitem-detail'),
     path('items/<int:pk>/bookmark/', views.add_to_bookmark, name='add-to-bookmark'),
     path('item/image/<int:pk>/', views.ProductImageView.as_view(), name='productitemimage-detail'),
+    path('items/<int:pk>/cart/', CartItemView.as_view(), name='add-to-cart'),
 ]
