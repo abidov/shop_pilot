@@ -7,7 +7,7 @@ from apps.products.models import ProductItem
 
 
 class Cart(models.Model):
-    user = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)    
+    user = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)
 
     def __str__(self):
         return str(self.id)
