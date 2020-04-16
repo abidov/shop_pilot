@@ -1,13 +1,32 @@
 from django.db import models
-from django.db.models.signals import post_save
-from django.dispatch import receiver
 from django.contrib.auth.models import User
 
 from apps.products.models import ProductItem
 
 
+class CartManager(models.Manager):
+
+    def get_or_new(self, request):
+        user = request.user
+        cart_id = request.session.get('cart_id', None)
+        if user is not None and user.is_authenticated:
+            if user.cart:
+                cart_obj = request.user.cart
+            else:
+                cart_obj = Cart.objects.get(pk=cart_id)
+                cart_obj.user = user
+                cart_obj.save()
+            return cart_obj
+        else:
+            cart_obj = Cart.objects.create()
+            cart_id = request.session['cart_id'] = cart_obj.id
+            return cart_obj
+
+
 class Cart(models.Model):
     user = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)
+
+    objects = CartManager()
 
     def __str__(self):
         return str(self.id)
@@ -21,9 +40,3 @@ class CartItem(models.Model):
     def __str__(self):
         return f"{self.cart.id} = cart items"
 
-    
-
-@receiver(post_save, sender=User)
-def create_user_cart(sender, instance, created, **kwargs):
-    if created:
-        Cart.objects.create(user=instance)

@@ -10,6 +10,7 @@ def api_root(request, format=None):
         'users': reverse('user-list', request=request, format=format),
         'categories': reverse('category-list', request=request, format=format),
         'sign-up': reverse('user-create', request=request, format=format),
+        'cart': reverse('cart-detail', request=request, format=format)
         # 'bookmark': reverse ('bookmark-detail', request=request, format=format),
     })
     return response

@@ -8,7 +8,7 @@ class CartSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Cart
-        fields = ('user', 'cart_items',)
+        fields = ('id', 'user', 'cart_items',)
 
     
 
