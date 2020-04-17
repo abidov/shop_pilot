@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-
 from apps.products.models import ProductItem
 
 
@@ -18,9 +17,9 @@ class CartManager(models.Manager):
                 cart_obj.save()
             return cart_obj
         else:
-            cart_obj = Cart.objects.create()
-            cart_id = request.session['cart_id'] = cart_obj.id
-            return cart_obj
+            cart_obj = Cart.objects.get_or_create(pk=cart_id)
+            cart_id = request.session['cart_id'] = cart_obj[0].id
+            return cart_obj[0]
 
 
 class Cart(models.Model):
@@ -39,4 +38,3 @@ class CartItem(models.Model):
 
     def __str__(self):
         return f"{self.cart.id} = cart items"
-

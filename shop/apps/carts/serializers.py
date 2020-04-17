@@ -10,8 +10,6 @@ class CartSerializer(serializers.HyperlinkedModelSerializer):
         model = Cart
         fields = ('id', 'user', 'cart_items',)
 
-    
-
 
 class CartItemSerializer(serializers.ModelSerializer):
 
