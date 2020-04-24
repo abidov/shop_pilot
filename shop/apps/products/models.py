@@ -35,7 +35,7 @@ class ProductItemManager(models.Manager):
 
 
 class ProductItem(models.Model):
-    color = models.CharField(choices=PRODUCT_COLORS, max_length=255, db_index=True, default=('PURPLE', 'Purple'))
+    color = models.CharField(choices=PRODUCT_COLORS, max_length=255, db_index=True)
     size = models.CharField(max_length=20)
     quantity = models.PositiveIntegerField()
     price = models.DecimalField(max_digits=10, decimal_places=2) # 2000.00

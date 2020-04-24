@@ -6,6 +6,7 @@ from apps.carts.views import CartItemView
 
 urlpatterns = [
     path('', views.ProductListView.as_view(), name='product-list'),
+    path('create/', views.ProductCreateView.as_view(), name='product-create'),
     path('<int:pk>/', views.ProductDetailView.as_view(), name='product-detail'),
     path('<int:pk>/items/', views.ProductItemListView.as_view(), name='product-items-list'),
     path('items/<int:pk>/', views.ProductItemDetailView.as_view(), name='productitem-detail'),

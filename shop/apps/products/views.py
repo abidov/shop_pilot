@@ -12,6 +12,11 @@ class ProductListView(generics.ListAPIView):
     serializer_class = ProductSerializer
 
 
+class ProductCreateView(generics.CreateAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductCreateSerializer
+
+
 class ProductDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductDetailSerializer
@@ -34,6 +39,7 @@ class ProductImageView(generics.RetrieveAPIView):
 
 @api_view(['POST'])
 def add_to_bookmark(request, pk):
+
     product = ProductItem.objects.get(pk=pk)
     bookmark = request.user.bookmark
     if product not in bookmark.product_items.all():
