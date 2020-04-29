@@ -8,7 +8,7 @@ SECRET_KEY = '@n7vu+4lf@yw!6-(b&ih_2y&ism#0!prq%q%#xq!^w_x&*i!o1'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -72,8 +72,12 @@ WSGI_APPLICATION = 'shop.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'shop',
+        'USER': 'achi',
+        'PASSWORD': 'ptnshop',
+        'HOST': 'db',
+        'PORT': '5432'
     }
 }
 
