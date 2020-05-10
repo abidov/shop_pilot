@@ -3,12 +3,14 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-SECRET_KEY = '@n7vu+4lf@yw!6-(b&ih_2y&ism#0!prq%q%#xq!^w_x&*i!o1'
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
+
+# '@n7vu+4lf@yw!6-(b&ih_2y&ism#0!prq%q%#xq!^w_x&*i!o1'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DJANGO_DEBUG', False)
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', '127.0.0.1').split(',')
 
 
 # Application definition
@@ -73,11 +75,11 @@ WSGI_APPLICATION = 'shop.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'shop',
-        'USER': 'achi',
-        'PASSWORD': 'ptnshop',
-        'HOST': 'db',
-        'PORT': '5432'
+        'NAME': os.getenv('DATABASE_NAME', 'shop'), # shop
+        'USER': os.getenv('DATABASE_USERNAME', 'achi'), # achi
+        'PASSWORD': os.getenv('DATABASE_PASSWORD', 'ptnshop'), # ptnshop
+        'HOST': os.getenv('DATABASE_HOST', '127.0.0.1'),
+        'PORT': os.getenv('DATABASE_PORT', 5432)
     }
 }
 
@@ -120,7 +122,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 LOGIN_REDIRECT_URL = 'api_root'
